@@ -1,0 +1,24 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="<%= root_path %>">IT Administration</a>
+    </div>
+    <% if user? || it_admin? %>
+      <ul class="nav navbar-nav">
+        <li ><%= link_to 'Home', root_path %></li>
+        <li ><%= link_to 'Orders', orders_path %></li>
+        <% if it_admin? %>
+          <li ><%= link_to 'Products', products_path %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="header-bar-menu">
+          <button type="button" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-user"></span> <%= user_name %> 
+          </button>
+        <li>
+        <li><%= link_to 'Logout', signout_path, class: "glyphicon glyphicon-log-out" %></li>
+      </ul>
+    <% end %>
+  </div>
+</nav>

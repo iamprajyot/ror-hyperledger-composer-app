@@ -1,0 +1,31 @@
+<%= link_to 'Add new product', products_new_path, class: 'btn btn-primary'%>
+
+<br>
+<h1>Product Listing</h1>
+<% if @products.empty? %>
+  <span>No records Found</span>
+<% else %>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Product Id</th>
+        <th>Product Type</th>
+        <th>Product Status</th>
+        <th>Assigned To</th>
+        <th>Issued By</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product['productId'] %></td>
+          <td><%= product['productType'] %></td>
+          <td><%= product['status'] %></td>
+          <td><%= product['assignedTo'] || 'NA' %></td>
+          <td><%= product['issuedBy'] || 'NA' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

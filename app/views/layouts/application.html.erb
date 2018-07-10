@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tracker</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-2734495419399429",
+        enable_page_level_ads: true
+      });
+    </script>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |type, msg|%>
+        <div class="alert alert-<%= type.eql?('success') ? 'success' : 'danger' %> fade in alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+          <%= msg.to_s.html_safe %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

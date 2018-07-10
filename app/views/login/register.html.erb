@@ -1,0 +1,62 @@
+<form action="<%= create_participant_path%>" class="form-horizontal" method="post" role="form">
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="firstName">
+      Username:
+    </label>
+    <div class="col-sm-6">
+      <input class="form-control" id="employeeId" name="employeeId" placeholder="Unique Username" type="text">
+      </input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="firstName">
+      First Name:
+    </label>
+    <div class="col-sm-6">
+      <input class="form-control" id="firstName" name="firstName" placeholder="First Name" type="text">
+      </input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="lastName">
+      Last Name:
+    </label>
+    <div class="col-sm-6">
+      <input class="form-control" id="lastName" name="lastName" placeholder="Last Name" type="text">
+      </input>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="">
+      Gender:
+    </label>
+    <div class="col-sm-6">
+      <label class="radio-inline">
+        <input id="role1" name="role" type="radio" value="USER">
+          User
+        </input>
+      </label>
+      <label class="radio-inline">
+        <input id="role2" name="role" type="radio" value="IT_ADMIN">
+          IT-Admin
+        </input>
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label" for="email">
+      Password:
+    </label>
+    <div class="col-sm-6">
+      <input class="form-control" id="email" name="email" placeholder="Email" type="email">
+      </input>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button class="btn btn-primary" id="register" type="submit">
+        Register
+      </button>
+    </div>
+  </div>
+</form>

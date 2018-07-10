@@ -1,0 +1,45 @@
+<%= link_to 'Place new order', orders_place_path, class: 'btn btn-primary' if user? %>
+
+<br>
+<h1>Order Listing</h1>
+<% if @orders.empty? %>
+  <span>No records Found</span>
+<% else %>
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Order Id</th>
+        <th>Product Type</th>
+        <th>Order Status</th>
+        <th>Orderer</th>
+        <th>Issuer</th>
+        <th>TransactionId</th>
+        <th>TimeStamp</th>
+        <% if it_admin? %>
+          <th>Actions</th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |key, order| %>
+        <tr>
+          <td><%= order['orderId'] %></td>
+          <td><%= order['productType'] %></td>
+          <td><%= order['orderStatus'] %></td>
+          <td title="<%= order['orderer'] %>"><%= extract_resource_id(order['orderer']) %></td>
+          <td title="<%= order['issuer'] || ''%>"><%= order['issuer'] ? extract_resource_id(order['issuer']) : 'NA' %></td>
+          <td><%= order['transactionId'] %></td>
+          <td><%=  order['timestamp'].present? ? order['timestamp'].to_time : 'NA' %></td>
+          <% if it_admin? %>
+            <% if order['orderStatus'] == PLACED%>
+              <td><%= link_to 'Issue', products_issue_path(order: order), class: 'btn btn-primary'%></td>
+            <% else %>
+              <td><%= link_to 'Revoke', '', class: 'btn btn-primary'%></td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
